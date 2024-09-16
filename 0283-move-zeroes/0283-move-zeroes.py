@@ -3,12 +3,18 @@ class Solution:
         """
         Do not return anything, modify nums in-place instead.
         """
-        a1 = []
-        a2 = []
+     
+        j = -1 #pointer
         for i in range(len(nums)):
-            if nums[i]!=0:
-                a1.append(nums[i])
-            else:
-                a2.append(nums[i])
+            if nums[i]==0:
+                j=i
+                break
 
-        nums[:] = a1+a2
+        if j == -1:
+            return nums
+        
+        for i in range(j+1,len(nums)):
+            if nums[i]!=0:
+                nums[j],nums[i] = nums[i],nums[j]
+                j+=1
+
