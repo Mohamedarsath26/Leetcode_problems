@@ -3,8 +3,6 @@ class Solution:
         """
         Do not return anything, modify nums in-place instead.
         """
-        #nums[:] = sorted(nums)  Bruteforece solution
-
         cnt = 0
         cnt_1 = 0
         cnt_2 = 0
