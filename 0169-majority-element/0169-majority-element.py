@@ -6,7 +6,7 @@ class Solution:
                 hash[num] += 1
             else:
                 hash[num] = 1
-
+        print(hash)
         max_val = max(hash.values())
         for key,val in hash.items():
             if val == max_val:
