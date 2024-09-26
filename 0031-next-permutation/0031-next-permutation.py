@@ -1,22 +1,22 @@
-import itertools
-from typing import List
-
 class Solution:
     def nextPermutation(self, nums: List[int]) -> None:
         """
-        Modifies nums to its next lexicographical permutation.
+        Do not return anything, modify nums in-place instead.
         """
-        # Step 1: Generate all unique permutations and sort them
-        arr = sorted(set(itertools.permutations(nums)))
+        ind = -1
+        n = len(nums)
+        for i in range(n-2,-1,-1):
+            if nums[i] < nums[i+1]:
+                ind = i
+                break
         
-        # Step 2: Find the current permutation's index
-        for i in range(len(arr)):
-            if arr[i] == tuple(nums):
-                # Step 3: Check if it's not the last permutation
-                if i != len(arr) - 1:
-                    # Update nums in place to the next permutation
-                    nums[:] = list(arr[i + 1])
-                else:
-                    # If it's the last permutation, return the first one
-                    nums[:] = list(arr[0])
-                return
+        if ind == -1:
+            nums[:] = sorted(nums)
+        else:
+            for i in range(n-1,-1,-1):
+                if nums[i] > nums[ind]:
+                    nums[i],nums[ind] = nums[ind],nums[i]
+                    break
+            
+            nums[ind + 1:] = sorted(nums[ind + 1:])
+                
