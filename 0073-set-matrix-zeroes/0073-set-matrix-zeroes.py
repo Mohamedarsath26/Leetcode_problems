@@ -20,38 +20,35 @@ class Solution:
         #         matrix[i][j] = 0  
 
         # return matrix
-        col0 = 1
-        # step 1: Traverse the matrix and
-        # mark 1st row & col accordingly:
+        col0 = 1  # To handle the first column separately
+        
+        # Step 1: Traverse the matrix and mark the first row & column accordingly
         for i in range(len(matrix)):
             for j in range(len(matrix[i])):
                 if matrix[i][j] == 0:
-                    # mark i-th row:
+                    # Mark i-th row
                     matrix[i][0] = 0
-
-                    # mark j-th column:
+                    
+                    # Mark j-th column
                     if j != 0:
                         matrix[0][j] = 0
                     else:
                         col0 = 0
 
-        # Step 2: Mark with 0 from (1,1) to (n-1, m-1):
+        # Step 2: Mark with 0 from (1, 1) to (n-1, m-1)
         for i in range(1, len(matrix)):
             for j in range(1, len(matrix[i])):
                 if matrix[i][j] != 0:
-                    # check for col & row:
                     if matrix[i][0] == 0 or matrix[0][j] == 0:
                         matrix[i][j] = 0
 
-        #step 3: Finally mark the 1st col & then 1st row:
+        # Step 3: Finally, mark the first row and column
         if matrix[0][0] == 0:
-            for j in range(len(matrix[1])):
+            for j in range(len(matrix[0])):
                 matrix[0][j] = 0
+
         if col0 == 0:
             for i in range(len(matrix)):
                 matrix[i][0] = 0
-
-        return matrix
-
 
 
