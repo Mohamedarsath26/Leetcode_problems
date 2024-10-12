@@ -1,43 +1,60 @@
-from typing import List
-
 class Solution:
-    def majorityElement(self, nums: List[int]) -> List[int]:
+    def majorityElement(self, nums: List[int]) -> int:
+
+        # hash = {}
+        # ls = []
+        # for num in nums:
+        #     if num in hash:
+        #         hash[num] += 1
+        #     else:
+        #         hash[num] = 1
+        # print(hash)
+        # max_val = (len(nums)//3)
+        # print(max_val)
+        
+        # for key,val in hash.items():
+        #     if val > max_val:
+        #         ls.append(key)
+
+        # return ls
+
         cnt_1 = 0
         cnt_2 = 0
         ele_1 = None
         ele_2 = None
         ls = []
-        n_times = len(nums) // 3
-        
-        # First pass: Find two potential candidates
-        for num in nums:
-            if ele_1 == num:
-                cnt_1 += 1
-            elif ele_2 == num:
-                cnt_2 += 1
-            elif cnt_1 == 0:
-                ele_1 = num
+        n_times = (len(nums)//3)
+        for i in range(len(nums)):
+            if cnt_1 == 0 and ele_2 != nums[i]:
+                ele_1 = nums[i]
                 cnt_1 = 1
-            elif cnt_2 == 0:
-                ele_2 = num
+            elif cnt_2 == 0 and ele_1 != nums[i]:
+                ele_2 = nums[i]
                 cnt_2 = 1
+            elif ele_1 == nums[i]:
+                cnt_1+=1
+            elif ele_2 == nums[i]:
+                cnt_2+=1
             else:
-                cnt_1 -= 1
-                cnt_2 -= 1
-        
-        # Second pass: Count the occurrences of the two candidates
+                cnt_1-=1
+                cnt_2-=1
+
         cnt_1 = 0
         cnt_2 = 0
-        for num in nums:
-            if num == ele_1:
-                cnt_1 += 1
-            elif num == ele_2:
-                cnt_2 += 1
+        for i in range(len(nums)):
+            if nums[i] == ele_1:
+                cnt_1+=1
+            if nums[i] == ele_2:
+                cnt_2+=1
 
-        # Check if the candidates appear more than n//3 times
         if cnt_1 > n_times:
             ls.append(ele_1)
         if cnt_2 > n_times:
             ls.append(ele_2)
 
         return ls
+
+
+
+
+                
