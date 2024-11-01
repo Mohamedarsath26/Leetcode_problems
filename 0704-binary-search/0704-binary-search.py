@@ -1,17 +1,16 @@
-from typing import List
-
 class Solution:
     def search(self, nums: List[int], target: int) -> int:
+        n = len(nums)
         low = 0
-        high = len(nums) - 1
+        high = n-1
 
-        while low <= high:
-            mid = (low + high) // 2
+        while(low<=high):
+            mid = (low+high)//2
             if nums[mid] == target:
-                return mid  # Return the index of the target
+                return mid
             elif nums[mid] < target:
-                low = mid + 1  # Move the low pointer to the right of mid
+                low = mid+1
             else:
-                high = mid - 1  # Move the high pointer to the left of mid
+                high = mid-1
+        return -1
 
-        return -1  # Return -1 if the target is not found
