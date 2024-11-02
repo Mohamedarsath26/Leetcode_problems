@@ -15,9 +15,9 @@ class Solution:
         low = 0
         high = n-1
         ans = n
-        while (low<high):
+        while (low<=high):
             mid = (low+high)//2
-            if a[mid] >= x:
+            if a[mid] > x:
                 ans = mid
                 high = mid - 1
             else:
@@ -34,4 +34,4 @@ class Solution:
         else:
             ub = self.upper_bound(nums,n,target)
 
-        return [lb,ub]
+        return [lb,ub-1]
