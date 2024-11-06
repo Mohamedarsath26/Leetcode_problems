@@ -6,9 +6,7 @@ class Solution:
         ans = float('inf')
         while(low<=high):
 
-            if nums[low]<nums[high]:
-                ans = min(ans,nums[low])
-                break
+            
 
             mid = (low+high)//2
 
