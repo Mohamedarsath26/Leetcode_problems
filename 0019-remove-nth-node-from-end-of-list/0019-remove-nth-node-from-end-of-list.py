@@ -29,7 +29,7 @@ class Solution:
             if cnt == n:
                 # prev is guaranteed to not be None here
                 prev.next = prev.next.next
-                break  # Node deleted, exit loop
+                  # Node deleted, exit loop
             prev = temp
             temp = temp.next
             cnt -= 1
